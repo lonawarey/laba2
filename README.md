@@ -1,21 +1,32 @@
 #include <stdio.h>
 
-int main(void) {
-    int n;
-    printf("Введите трёхзначное положительное целое число: ");
-    if (scanf("%d", &n) != 1) return 0;
-
-    if (n < 100 || n > 999) {
-        printf("Ошибка: число не является трёхзначным (100..999).\n");
-        return 0;
-    }
-
-    int units = n % 10;
-    int tens = (n / 10) % 10;
-    int hundreds = n / 100;
-
-    int result = units * 100 + hundreds * 10 + tens;
-
-    printf("Результат: %d\n", result);
+int main() {
+    int number;      // Исходное трехзначное число
+    int original;    // Сохраним исходное число для вывода
+    int lastDigit;   // Последняя цифра
+    int firstTwo;    // Первые две цифры
+    int result;      // Результат после преобразования
+    
+    // Ввод трехзначного числа
+    printf("Введите трехзначное число: ");
+    scanf("%d", &number);
+    
+    // Сохраняем исходное число
+    original = number;
+    
+    // Извлекаем последнюю цифру
+    lastDigit = number % 10;
+    
+    // Извлекаем первые две цифры
+    firstTwo = number / 10;
+    
+    // Формируем новое число: lastDigit * 100 + firstTwo
+    result = lastDigit * 100 + firstTwo;
+    
+    // Вывод результата
+    printf("\nИсходное число: %d\n", original);
+    printf("После преобразования: %d\n", result);
+    printf("(Последняя цифра '%d' перемещена в начало)\n", lastDigit);
+    
     return 0;
 }
